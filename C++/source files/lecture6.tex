@@ -1,0 +1,53 @@
+\documentclass{article}
+
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{mathtools,amssymb}
+
+
+\usepackage[T1,T2A]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\usepackage{listings}
+
+\title{Язык C++. Лекция 6}
+
+\author{Мещерин Илья}
+
+\date{\DTMdate{2018-11-05}}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\begin{large}
+		\textbf{Наследование}
+	\end{large}
+\end{center}
+
+\noindent \textbf{5.1) Объявление}\\
+\textit{Derived} наследник \textit{Base}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={1-3}, xleftmargin=0.8cm]{code6.cpp}
+\begin{itemize}
+	\item \textit{public} - публичное наследование (все функции из вне класса знают о том, что класс является наследником и могут вызывать методы родителя, но, конечно, только те методы, которые у родителя являются публичными)
+	\item \textit{private} - приватное наследование (сам класс знает от кого наследуется, но никто из вне не знает)
+	\item \textit{protected} - protected наследование (сам класс знает от кого наследуется, а так же его потомки то же об этом знают)
+\end{itemize}
+\textbf{5.2) Поиск имен при наследовании}\\
+\textbf{5.2a) Сокрытие имен наследником}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={5-18}, xleftmargin=0.8cm]{code6.cpp}
+В данном случае вызовется версия функции \textit{f()}, описанная в классе \textit{Derived}, что логично\\
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={20-33}, xleftmargin=0.8cm]{code6.cpp}
+Ошибка компиляции. Правило поиска имен - имя ищется сначала в классе \textit{Derived} и все функции с таким именем участвуют в перегрузке и только они.
+
+
+
+\end{document}

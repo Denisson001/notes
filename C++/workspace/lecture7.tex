@@ -1,0 +1,55 @@
+\documentclass{article}
+
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{mathtools,amssymb}
+
+
+\usepackage[T1,T2A]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\usepackage{listings}
+
+\title{Язык C++. Лекция 7}
+
+\author{Мещерин Илья}
+
+\date{\DTMdate{2018-10-29}}
+
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{5.2б) Явный вызов методов предка}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={1-12}, xleftmargin=0.8cm]{code7.cpp}
+Явно пишем откуда взять нужную функцию. Если наследование приватное, то все равно ошибка компиляции.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={14-17}, xleftmargin=0.8cm]{code7.cpp}
+Второй способ решения вопроса. В таком случае вызывать функцию \textit{f()} можно как обычно.
+\noindent \textbf{5.2в) Пример}\\
+Оффтоп - если при наследовании не написать тип наследования, то по умолчанию \textit{private} (у \textit{struct} он \textit{public})
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={19-32}, xleftmargin=0.8cm]{code7.cpp}
+Ошибка компиляции.\begin{large}
+	\textbf{Проверка доступа происходит после поиска имен.}
+\end{large}
+\noindent \textbf{5.2г) Пример}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={34-47}, xleftmargin=0.8cm]{code7.cpp}
+Ошибка компиляции. Название типа \textit{Granny} запрещено внутри класса \textit{Son}.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={49-54}, xleftmargin=0.8cm]{code7.cpp}
+А так уже писать можно, т.к. в глобальной области видимости запретов нет.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={56-59}, xleftmargin=0.8cm]{code7.cpp}
+Все равно ошибка компиляции, т.к. ошибка в выражении \textit{s.Granny::a} возникает после точки, а не после двух двоеточий.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={61-64}, xleftmargin=0.8cm]{code7.cpp}
+Такой способ уже решает проблему.\\
+\noindent \textbf{5.2д) Пример}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={66-79}, xleftmargin=0.8cm]{code7.cpp}
+Все ОК, но вообще отношение дружбы не транзитивно.\\
+\noindent \textbf{5.3) Порядок вызова конструкторов и деструкторов при наследовании}
+
+\end{document}

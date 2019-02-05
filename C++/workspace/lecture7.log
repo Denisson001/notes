@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.5)  5 FEB 2019 22:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.5)  6 FEB 2019 01:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**lecture12.tex
-(./lecture12.tex
+**lecture7.tex
+(./lecture7.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -743,8 +743,8 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(./lecture12.aux)
-\openout1 = `lecture12.aux'.
+(./lecture7.aux)
+\openout1 = `lecture7.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
@@ -894,116 +894,30 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) (./code12.cpp
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1.
+) (./code7.cpp)
+(./code7.cpp) (./code7.cpp) [1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
-) (./code12.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 47--50
-
- []
-
-(./code12.cpp) (./code12.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 58--62
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--62
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--62
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--62
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--62
-
- []
-
-(./code12.cpp [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
-Underfull \hbox (badness 10000) in paragraph at lines 63--66
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 63--66
-
- []
-
-(./code12.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-
- []
-
-[2] (./code12.cpp)
-Overfull \hbox (0.845pt too wide) in paragraph at lines 52--69
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--74
-
- []
-
-(./code12.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
-
- []
-
-(./code12.cpp) (./code12.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 82--85
-
- []
-
-(./code12.cpp [3]) [4] (./lecture12.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./code7.cpp) (./code7.cpp
+) (./code7.cpp) (./code7.cpp) (./code7.cpp
+[2]) [3] (./lecture7.aux) ) 
 Here is how much of TeX's memory you used:
- 8104 strings out of 493029
- 109955 string characters out of 6136235
- 233512 words of memory out of 5000000
- 11470 multiletter control sequences out of 15000+600000
- 15661 words of font info for 47 fonts, out of 8000000 for 9000
+ 8019 strings out of 493029
+ 108760 string characters out of 6136235
+ 232496 words of memory out of 5000000
+ 11396 multiletter control sequences out of 15000+600000
+ 13962 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,6n,100p,811b,1666s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-
-super/cm-super-t2a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></u
-sr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts
-/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-sup
-er/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></us
-r/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on lecture12.pdf (4 pages, 123034 bytes).
+ 51i,6n,100p,810b,1662s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-
+t2a.enc}</usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/
+texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/pu
+blic/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm12
+00.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/t
+exmf/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on lecture7.pdf (3 pages, 100681 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 39 PDF objects out of 1000 (max. 8388607)
+ 27 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
