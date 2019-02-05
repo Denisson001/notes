@@ -1,0 +1,67 @@
+\documentclass{article}
+
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{mathtools,amssymb}
+
+
+\usepackage[T1,T2A]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\usepackage{listings}
+
+\title{Язык C++. Лекция 13}
+
+\author{Мещерин Илья}
+
+\date{\DTMdate{2018-12-10}}
+
+
+\begin{document}
+
+\maketitle
+
+\textbf{8.7) Пример нестандартного аллокатора} \\
+\textit{StackAllocator<int>} \\
+Сначала выделяет большой кусок памяти. Особенность в том, что при deallocate ничего не делает (экономит время работы). 
+
+\begin{center}
+	\begin{large}
+		\textbf{Контейнеры}
+	\end{large}
+\end{center}
+
+
+\noindent \textit{vector, list, deque} - Sequence containers (реализация идеи последовательного хранения элементов)\\
+\textit{map, set (+multi, unordered)} - Associative containers (реализация идеи построения отображения)\\
+\textbf{9.1) std::vector}
+\begin{itemize}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={1-13}]{code13.cpp}
+	\item[а)] 
+\textit{push\_back(), pop\_back(), emplace\_back()} (создает объект непосредственно в конце вектора из аргументов)\\
+	\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={15-36}]{code13.cpp}
+	\item[б)] Оператор {[ ]}\textit{, at()} (если вышли за границы, то кинет исключение, при использовании [ ] будет ub)
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={38-42}]{code13.cpp}
+	\item[в)] Конструктор, деструктор, оператор =\\
+При копировании нужно определить аллокатор для нового контейнера. Функция ниже возвращает аллокатор для нового объекта.
+\lstinputlisting[language=C++, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={44-44}]{code13.cpp}
+	\item[г)] \textit{swap()}\\
+Меняет местами указатели на массивы и меняет местами аллокаторы.
+	\item[д)] \textit{size(), capacity(), front(), back(), resize(), shrink\_to\_fit()} (делает размер вектора равным числу элементов в нем)
+\end{itemize}
+
+\noindentРазмер вектора константа
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={47-50}]{code13.cpp}
+
+\noindentУпадет из-за двойного удаления по одному месту.
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={52-55}]{code13.cpp}
+
+
+
+\end{document}

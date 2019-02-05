@@ -1,0 +1,115 @@
+==8==) Аллокаторы
+1)placement new
+new (p) T(...); - явный вызов конструктора
+p->~T(); - явный вызов деструктора
+2)перегрузка оператора new
+void* operator new(size_t n){} n - кол-во байт
+при вызове new
+a)выделяется память
+б)вызывается конструктор
+
+когда перегружаем new думаем только о первой части, вторую часть перегрузить нельзя
+void* operator new(size_t n, void *p){} - перегрузили placement new
+new (p, тут еще можно писать что угодно) T(...); тогда 
+void* operator new(size_t n, void *p, тут то самое что угодно){}
+ОПЕРАТОР NEW И ФУНКЦИЯ NEW - РАЗНЫЕ ВЕЩИ
+реализация placement new - void* operator new(size_t n, void *p){ return p; } (т.к. пункт б сам сделается)
+
+при вызове delete
+a)вызывается деструктор
+б)освобождается память
+
+только вторую часть можно перегрузить
+ПРИМЕР:
+new (p, 2) T(...);
+можно написать delete(...) но вызывать его нужно руками, то есть
+сначала вызвать деструктор p->~T();
+а потом наш delete(...)
+(стандартный delete p; переопределить с параметрами нельзя)
+ПРИМЕР:
+void* operator new(size_t n, int k){
+}
+
+int main(){
+    int *p = new(23) int(10);
+}
+
+ОТДЕЛЬНО new[] и delete[]
+
+СОВЕТ: если реализовали кастомный new, то стоит реализовать delete с такими же параметрами
+такой delete вызовется, если конструктор кинет исключение 
+
+class Animal {
+public:
+  virtual void say() = 0;
+  virtual ~Animal() {}
+};
+
+class Sheep : public Animal {
+public:
+  virtual void say() {
+    printf("Sheep says baaaaa\n");
+  }
+
+  virtual ~Sheep() {
+    printf("Sheep is dead\n");
+  }
+
+  void operator delete(void* p) {
+    printf("Reclaiming Sheep storage from %p\n", p);
+    ::operator delete(p);
+  }
+};
+
+int main(int argc, char** argv) {
+  Animal* ap = new Sheep;
+  ap->say();
+  delete ap;
+  return 0;
+}
+
+вызовется правильный delete
+
+3) nothrow new
+new(std::nothrow) T();
+void* operator new (std::size_t size, const std::nothrow_t &nothrow_value) noexcept;
+#include <new>
+#include <memory>
+4)new_handler
+std::set_new_handler(указатель на функцию, которую надо вызвать)
+std::get_new_handler() (по умолчанию nullptr лежит)
+в бесконечном цикле попытка выделить память -> вызов new_handler
+5)
+template<class T>
+struct std::allocator<T> {
+	T* allocate(size_t n) const { //n - кол-во объектов, а не байт
+		return (T*)(new char[n * sizeof(T)]); 
+	}
+	void deallocate(T* p, size_t n) const {
+		delete[] (char*)p;	
+	}
+	template<typename ... Args>
+	void* construct(T* p, const Args &... args) const {
+		return new(p) T(args...);	
+	} 
+	void destroy(T* p) const {
+		p->~T();
+	}
+};
+у аллокатора нет полей, это обертка над new и delete
+но у него есть typedef T value_type;
+6)
+template<class Alloc>
+std::allocator_traits<Alloc> реализует за аллокатор те методы, которые аллокатор не реализовал
+констракт и дестрой у всех аллокаторов одинаковые
+вектор обращается к allocator_traits
+
+template<class Alloc>
+std::allocator_traits<Alloc>{
+	static Alloc::value_type* allocate(Alloc &a, size_t n){
+		return a.allocate();		
+	} 
+	аналогично deallocate;
+	construct destroy умеет проверять реализованы ли эти функции в аллокаторе с нужной сигнатурой
+	 уже и иначе реализует сама
+}

@@ -1,0 +1,88 @@
+\documentclass{article}
+
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{mathtools,amssymb}
+
+
+\usepackage[T1,T2A]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\usepackage{listings}
+
+\title{Язык C++. Лекция 12}
+
+\author{Мещерин Илья}
+
+\date{\DTMdate{2018-11-30}}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\begin{large}
+		\textbf{Аллокаторы}
+	\end{large}
+\end{center}
+
+\noindent \textbf{8.1) Placement new} \\
+Явный вызов конструктора и деструктора на месте
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={1-3}]{code12.cpp}
+\noindent \textbf{8.2) Перегрузка операторов new, delete}\\
+\textit{n} - кол-во байт
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={5-5}, xleftmargin=0.8cm]{code12.cpp}
+При вызове оператора \textit{new}
+\begin{itemize}
+	\item[а)]Выделяется память
+	\item[б)]Вызывается конструктор
+\end{itemize}
+Когда перегружаем \textit{new} думаем только о первой части, вторую часть перегрузить нельзя\\
+Оператор \textit{new} и функция \textit{new()} - разные вещи\\\\
+Реализация перегрузки функции \textit{new} (т.к. пункт б делается сам)
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={7-7}, xleftmargin=0.8cm]{code12.cpp}
+В оператор \textit{new} можно передать дополнительные аргументы
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={9-10}, xleftmargin=0.8cm]{code12.cpp} 
+При вызове оператора \textit{delete}
+\begin{itemize}
+	\item[а)]Вызывается деструктор
+	\item[б)]Освобождается память
+\end{itemize}
+Только вторую часть можно перегрузить\\
+Можно написать \textit{delete(...)} но вызывать эту функцию нужно руками, то есть сначала вызвать деструктор \textit{p->\textasciitilde T()} потом наш \textit{delete(...)}
+(стандартный \textit{delete p} переопределить с параметрами нельзя)\\\\\\\\\\\\
+Пример
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={12-18}, xleftmargin=0.8cm]{code12.cpp}
+Все то же самое отдельно для операторов \textit{new[]} и \textit{delete[]}\\\\
+Совет: если реализовали кастомный \textit{new}, то стоит реализовать \textit{delete} с такими же параметрами такой \textit{delete} вызовется, если конструктор кинет исключение\\\\
+Пример
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={20-46}]{code12.cpp}
+Вызовется правильный \textit{delete} не смотря на то, что \textit{static operator delete}\\\\\\\\\\
+\noindent \textbf{8.3) Nothrow new}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={48-52}, xleftmargin=0.8cm]{code12.cpp}
+Такой вызов оператора \textit{new} не бросает исключений\\\\
+\noindent \textbf{8.4) New\_handler}\\
+Правильная реализация функции \textit{new}: в бесконечном цикле пытаемся выделить память и если не смогли, то вызываем \textit{new\_handler()}\\
+То есть эта функции по логике должна каким-то образом помогать функции \textit{new} выделить память
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={54-55}, xleftmargin=0.8cm]{code12.cpp}
+В \textit{std::set\_new\_handler()} можно передать свою функцию \textit{new\_handler()}, по умолчанию \textit{nullptr}\\
+
+\noindent \textbf{8.5) Реализация аллокатора}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={57-72}]{code12.cpp}
+Аллокатор - обертка над \textit{new} и \textit{delete}\\
+\noindent \textbf{8.6) std::allocator\_traits}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={75-76}, xleftmargin=0.8cm]{code12.cpp}
+Реализует за аллокатор те методы, которые аллокатор не реализовал\\
+\textit{construct()} и \textit{destroy()} у всех аллокаторов реализуется одинаково, поэтому эту реализацию можно вынести в отдельный класс - \textit{allocator\_traits}\\
+Вектор реализуется через обращения к \textit{allocator\_traits}\\
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={78-83}, xleftmargin=0.8cm]{code12.cpp}
+Аналогично реализуется \textit{deallocate()}\\
+Для \textit{construct(), destroy()} класс умеет проверять реализованы ли уже эти функции в аллокаторе с нужной сигнатурой и иначе реализует сам
+\end{document}
