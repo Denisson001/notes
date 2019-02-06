@@ -1,0 +1,89 @@
+\documentclass{article}
+
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{mathtools,amssymb}
+
+
+\usepackage[T1,T2A]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\usepackage{listings}
+
+\title{Язык C++. Лекция 7}
+
+\author{Мещерин Илья}
+
+\date{\DTMdate{2018-10-29}}
+
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{5.2б) Явный вызов методов предка}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3, belowcaptionskip=5pt, columns=flexible, linerange={1-12}]{code7.cpp}
+Явно пишем откуда взять нужную функцию. Если наследование приватное, то все равно ошибка компиляции.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3, belowcaptionskip=5pt, columns=flexible, linerange={14-17}, xleftmargin=0.8cm]{code7.cpp}
+Второй способ решения вопроса. В таком случае вызывать функцию \textit{f()} можно как обычно.
+\noindent \textbf{5.2в) Пример}\\
+Оффтоп - если при наследовании не написать тип наследования, то по умолчанию \textit{private} (у \textit{struct} он \textit{public})
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={19-32}]{code7.cpp}
+Ошибка компиляции.\begin{large}
+	\textbf{Проверка доступа происходит после поиска имен.}
+\end{large}
+\noindent \textbf{5.2г) Пример}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={34-47}]{code7.cpp}
+Ошибка компиляции. Название типа \textit{Granny} запрещено внутри класса \textit{Son}.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={49-54}, xleftmargin=0.8cm]{code7.cpp}
+А так уже писать можно, т.к. в глобальной области видимости запретов нет.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={56-59}, xleftmargin=0.8cm]{code7.cpp}
+Все равно ошибка компиляции, т.к. ошибка в выражении \textit{s.Granny::a} возникает после точки, а не после двух двоеточий.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={61-64}, xleftmargin=0.8cm]{code7.cpp}
+Такой способ уже решает проблему.\\
+\noindent \textbf{5.2д) Пример}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={66-79}]{code7.cpp}
+Все ОК, но вообще отношение дружбы не транзитивно.\\
+\noindent \textbf{5.3) Порядок вызова конструкторов и деструкторов при наследовании}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={81-93}]{code7.cpp}
+Ошибка компиляции, т.к. нечем проинициализировать класс \textit{Granny}. Если в классе \textit{Granny} был бы конструктор по умолчанию, то все сработало бы. 
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={95-98}, xleftmargin=0.8cm]{code7.cpp}
+Чтобы решить проблему, можно явно вызвать конструктор для класса \textit{Granny}.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={100-103}, xleftmargin=0.8cm]{code7.cpp}	
+Ошибка компиляции по двум причинам: таким способом можно инициализировать поля только своего класса, а также таким способом мы так и не проинициализровали класс \textit{Granny}. \\
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={105-122}]{code7.cpp}
+Ошибка компиляции. A constructor of a child will always call the constructor of it's parent.\\\\
+При вызове конструктора сначала конструируются предки, а только потом сам класс. При вызове деструктора сначала разрушается сам класс, а только потом его предки.\\
+\noindent \textbf{5.4) Множественное наследование}\\
+\noindent \textbf{5.4а) Примеры}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={124-143}]{code7.cpp}
+На выходе получим число 5 (\textit{P, Re, P, Rh, S}).
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={145-146}, xleftmargin=0.8cm]{code7.cpp}
+Ошибка компиляции из-за неоднозначности.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={147-148}, xleftmargin=0.8cm]{code7.cpp}
+Решение проблемы.\\
+Это все называется проблемой \textbf{ромбовидного наследования (diamond problem)}.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={150-157}, xleftmargin=0.8cm]{code7.cpp}
+Даже если одно из наследований приватное, то все равно ошибки компиляции, т.к. сначала происходит поиск имен, а только потом проверка доступа.\\
+\noindent \textbf{5.4б) Примеры}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={159-173}]{code7.cpp}
+В таком примере возникает проблема в том, что к одному \textit{s.Mom::x} мы можем обратиться, а к другому \textit{x} никак не получится обратиться.\\
+\noindent \textbf{5.5) Виртуальное наследование}
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={175-194}]{code7.cpp}
+Компилятор обязан создать только одну виртуальную версию класса \textit{Parallelogram}.\\
+Если одновременно наследовать один и тот же класс виртуально и невиртуально, то на все виртуальные наследования создастся одна версия класса, а на все невиртуальные наследования каждый раз будет создаваться отдельная версия класса.
+\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={196-220}]{code7.cpp}
+Обратиться к \textit{d.y} нельзя т.к. существует два пути \textit{D-->A.y} и \textit{D-->B-->W.y}. Для поля \textit{x} также есть два пути, но в данном случае путь \textit{D-->A.x} замещает путь \textit{D-->B-->V.x} и неоднозначности нет.\\
+\noindent \textbf{5.6) Приведение типов между наследниками}
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={222-225}, xleftmargin=0.8cm]{code7.cpp}
+В первом случае произойдет \textit{срезка при копировании}. А проинициализировать потомка с помощью предка нельзя, т.к. не хватает информации.
+\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={227-228}, xleftmargin=0.8cm]{code7.cpp}
+Правильно писать так, чтобы не терять информацию и при необходимости обратиться к полям класса \textit{Derived} с помощью каста.\\
+Но если наследование было приватным, то так писать нельзя (разве что только с помощью \textit{reinterpret\_cast<>}). 
+\end{document}
