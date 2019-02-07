@@ -16,17 +16,22 @@
 
 \usepackage{listings}
 
-\title{Язык C++. Лекция 8}
-
-\author{Мещерин Илья}
-
-\date{\DTMdate{2018-11-03}}
-
-
-
 \begin{document}
-
-\maketitle
+\begin{center}
+	\begin{LARGE}
+		\textbf{Язык C++}
+	\end{LARGE}
+\end{center}
+\begin{center}
+	\begin{normalsize}
+		\textbf{Мещерин Илья}
+	\end{normalsize}
+\end{center}
+\begin{center}
+	\begin{Large}
+		\textbf{Лекция 8}
+	\end{Large}
+\end{center}
 
 \newcommand{\cs}[1]{\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={#1}, xleftmargin=0.8cm]{code8.cpp}}
 \newcommand{\cb}[1]{\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={#1}]{code8.cpp}}
@@ -70,7 +75,7 @@
 \cs{133-139}
 Слово \textit{override} гарантирует, что функция переопределяет виртуальную функцию базового класса. Если это не так, то получится ошибка компиляции.\\
 \cb{141-155}
-Слово \textit{final} позволяет запретить наследоваться от класса или переопределять виртуальный метод класса.
+Слово \textit{final} позволяет запретить наследоваться от класса или переопределять виртуальный метод класса.\\
 \noindent \textbf{5.11) Оператор \textit{typeid}}
 \cs{157-159}
 Функция \textit{typeid()} возвращает объект класса \textit{std::type\_info}. С помощью этой функции можно проверять типы объектов на равенство.

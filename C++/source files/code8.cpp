@@ -158,7 +158,7 @@ struct C : B{ // Error: B is final
 int x;
 typeid(x).name();
 
-class Base {
+class Base{
 public:
     virtual void vvfunc() {}
 };
@@ -166,7 +166,7 @@ public:
 class Derived : public Base {};
 
 using namespace std;
-int main() {
+int main(){
     Derived* pd = new Derived;
     Base* pb = pd;
     cout << typeid( pb ).name() << endl;   //prints "class Base *"
@@ -176,7 +176,7 @@ int main() {
     delete pd;
 }
 
-class Base {
+class Bas {
 public:
     void vvfunc() {}
 };
