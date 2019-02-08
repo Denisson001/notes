@@ -1,0 +1,89 @@
+\documentclass{article}
+
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{mathtools,amssymb}
+
+
+\usepackage[T1,T2A]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\usepackage{listings}
+
+\begin{document}
+
+\newcommand{\cs}[1]{\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={#1}, xleftmargin=0.8cm]{code10.cpp}}
+\newcommand{\cb}[1]{\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={#1}]{code10.cpp}}
+
+\begin{center}
+	\begin{LARGE}
+		\textbf{Язык C++}
+	\end{LARGE}
+\end{center}
+\begin{center}
+	\begin{normalsize}
+		\textbf{Мещерин Илья}
+	\end{normalsize}
+\end{center}
+\begin{center}
+	\begin{Large}
+		\textbf{Лекция 10}
+	\end{Large}
+\end{center}	 
+
+\noindent \textbf{6.8) Variadic templates}
+\cs{1-2}
+Пример использования.
+\cb{4-14}
+Функция \textit{print()} может принимать переменное число аргументов и выводить их в поток вывода. 
+\cs{16-16}
+Оператор, который позволяет узнать количество аргументов в паке аргументов, когда их переменное количество.\\
+Шаблон с переменным числом аргументов будет выступать как наименее предпочтительный.
+\cs{18-18}
+Позволяет принять аргументы по ссылке.
+\cs{20-24}
+Так тоже можно\\
+\noindent \textbf{6.8$\frac{1}{2}$) Tuple}
+\cs{26-28}
+Кортеж, обобщение класса \textit{std::pair}.\\
+\noindent \textbf{6.9) Пример реализации сортировки}
+\cs{30-35}
+Объект \textit{cmp} может быть функцией, а может быть объектом, у которого определен \textit{operator()} от двух объектов типа \textit{T}. По умолчанию \textit{Cmp = std::less<T>}, где \textit{std::less<T>} - класс, в котором определен \textit{operator()}, который вызывает \textit{operator<}.
+\cs{37-46}
+Пример реализации класса \textit{less}. Аналогично существует класс \textit{std::greater}.\\
+\noindent \textbf{6.10) CRTP (Curiously Recurring Template Pattern)}
+\cb{48-63}
+Это эффективно эмулирует систему виртуальных функций во время компиляции без необходимости платить цену за динамический полиморфизм (таблицы виртуальных методов, время, затрачиваемое на выбор метода, множественное наследование), но не позволяет делать этого во время выполнения. 
+\\\\\\\\\\
+\begin{center}
+	\begin{large}
+		\textbf{Исключения\\(Exceptions)}
+	\end{large}
+\end{center}
+\noindent \textbf{7.1) Общая идея}
+\cs{65-65}
+Если оператор \textit{new} не смог выделить память, то он может кинуть исключение.
+\cs{67-67}
+Если под \textit{b} на самом деле лежит не \textit{Derived}, то \textit{dynamic\_cast} может кинуть исключение.\\\\
+Концепция исключений: если у функции происходит исключительная ситуация, то она может сгенерировать некоторый объект, который будет сигнализировать о том, что что-то пошло не так. Этот объект создается в специальной области памяти, чтобы он существовал. После чего происходит раскрутка стека вызовов до первого обработчика исключений подходящего типа, и управление передаётся обработчику. Если такой обработчик не был найден, то происходит runtime error (т.к. мы выйдем из функции \textit{main} с \textbf{необработанным исключением}).\\
+\noindent \textbf{7.1$\frac{1}{2}$) Try, catch}
+\cs{69-77}
+С помощью \textit{throw} можно кидать объект любого типа.
+\cs{79-79}
+Поймать что угодно.\\
+\noindent \textbf{7.2) Отличие между исключениями и ошибками}\\
+\textbf{Не каждое исключение это runtime error и не каждый runtime error это исключение}.\\
+Исключение не обязательно может сигнализировать об ошибке, например, можно выйти из вложенных циклов, бросив исключение и поймав в нужном месте.\\
+\noindent \textbf{7.3) Последовательность и правила обработки исключений}
+\cs{81-90}
+Во-первых, когда происходит обработка исключений компилятор не делает приведение типов, кроме приведения типов между родителями и наследниками. Во-вторых, из всех \textit{catch} компилятор выбирает первый, который подходит, а остальные игнорирует.\\\\\\
+\cs{92-99}
+На \textit{void*} поймается любой указатель.
+\cs{101-111}
+\end{document}

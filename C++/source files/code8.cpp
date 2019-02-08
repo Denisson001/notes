@@ -178,7 +178,7 @@ int main(){
 
 class Bas {
 public:
-    void vvfunc() {}
+    void vfunc() {}
 };
 
 cout << typeid( pb ).name() << endl;   //prints "class Base *"
