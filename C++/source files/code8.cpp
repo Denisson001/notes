@@ -176,7 +176,7 @@ int main(){
     delete pd;
 }
 
-class Bas {
+class Base {
 public:
     void vfunc() {}
 };

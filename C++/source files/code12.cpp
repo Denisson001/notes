@@ -13,9 +13,9 @@ void* operator new(size_t n, int k){
 	//code here...
 }
 
-int main(){
-	int *p = new(42) int;
-}
+int *p = new(42) int;
+
+
 
 class Animal {
 	public:
