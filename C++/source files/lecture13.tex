@@ -52,11 +52,11 @@
 \begin{itemize}
 \lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={1-13}]{code13.cpp}
 	\item[а)] 
-\textit{push\_back(), pop\_back(), emplace\_back()} (создает объект непосредственно в конце вектора из аргументов)\\
+\textit{push\_back(), pop\_back(), emplace\_back()} (создает объект непосредственно в конце вектора из аргументов)
 	\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={15-36}]{code13.cpp}
-	\item[б)] Оператор {[ ]}\textit{, at()} (если вышли за границы, то кинет исключение, при использовании [ ] будет ub)
+	\item[б)]\textit{Operator[], at()} (если вышли за границы, то кинет исключение, при использовании \textit{operator[]} будет ub)
 \lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={38-42}]{code13.cpp}
-	\item[в)] Конструктор, деструктор, оператор =\\
+	\item[в)] Конструктор, деструктор, operator=\\
 При копировании нужно определить аллокатор для нового контейнера. Функция ниже возвращает аллокатор для нового объекта.
 \lstinputlisting[language=C++, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={44-44}]{code13.cpp}
 	\item[г)] \textit{swap()}\\
@@ -64,10 +64,10 @@
 	\item[д)] \textit{size(), capacity(), front(), back(), resize(), shrink\_to\_fit()} (делает размер вектора равным числу элементов в нем)
 \end{itemize}
 
-\noindentРазмер вектора константа
+\noindent Размер вектора константа
 \lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={47-50}]{code13.cpp}
 
-\noindentУпадет из-за двойного удаления по одному месту.
+\noindent Упадет из-за двойного удаления по одному месту.
 \lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={52-55}]{code13.cpp}
 
 

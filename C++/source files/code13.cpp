@@ -53,3 +53,8 @@ int main(){
 	vector<int> v(100);
 	delete[] &(v[0]);
 }
+
+template<
+    class T,
+    class Allocator = std::allocator<T>
+> class vector;
