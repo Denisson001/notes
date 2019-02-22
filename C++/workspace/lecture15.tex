@@ -1,0 +1,93 @@
+\documentclass{article}
+
+
+\usepackage[a4paper]{geometry}
+
+\usepackage{mathtools,amssymb}
+
+
+\usepackage[T1,T2A]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\usepackage{listings}
+
+\begin{document}
+
+\newcommand{\cs}[1]{\lstinputlisting[language=C++, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={#1}, xleftmargin=0.8cm]{code15.cpp}}
+\newcommand{\cb}[1]{\lstinputlisting[language=C++, numbers=left, firstnumber=1, tabsize=3,belowcaptionskip=5pt, columns=flexible, linerange={#1}]{code15.cpp}}
+
+\begin{center}
+	\begin{LARGE}
+		\textbf{Язык C++}
+	\end{LARGE}
+\end{center}
+\begin{center}
+	\begin{normalsize}
+		\textbf{Мещерин Илья}
+	\end{normalsize}
+\end{center}
+\begin{center}
+	\begin{Large}
+		\textbf{Лекция 15}
+	\end{Large}
+\end{center}	 
+
+\noindent \textbf{9.4$\frac{1}{3}$) std::set}\\
+Ассоциативный контейнер, который содержит упорядоченный набор уникальных объектов типа \textit{Key}. Сортировка элементов осуществляется применением функции \textit{Compare} к ключам множества. Операции поиска, удаления и вставки имеют логарифмическую сложность. Данный тип обычно реализуется как красно-черные деревья.
+\cs{1-5}
+Есть методы \textit{insert(), erase(), begin(), end(), find()} (проверяет есть ли элемент в множестве, и если есть, то возвращает итератор на него, а иначе возвращает итератор на элемент, следующий за последним элементом контейнера)\textit{, size(), clear()}.
+\cs{7-7}
+Так можно проверить есть ли элемент \textit{x} в множестве \textit{s}.\\
+Метод \textit{count(key)} возвращает количество элементов с ключом \textit{key} (в \textit{std::set} возвращает 0 или 1).\\
+\noindent \textbf{9.4$\frac{2}{3}$) std::multiset, std::multimap}\\
+В отличие от \textit{std::set} (\textit{set::map}) в \textit{std::multiset} (\textit{set::multimap}) допускаются ключи с одинаковыми значениями.\\
+Метод \textit{iterator lower\_bound(key)} возвращает итератор, указывающий на первый элемент, который является не меньше, чем \textit{key}. Если такой элемент не найден то возвращает итератор на элемент, следующий за последним элементом контейнера.\\
+Метод \textit{iterator upper\_bound(key)} возвращает итератор, указывающий на первый элемент, больший, чем \textit{key}. Аналогично поведение, если такой элемент не найден.\\
+Метод \textit{std::pair<iterator, iterator> equal\_range(Key)} возвращает набор элементов для конкретного ключа.\\
+Эти три методы есть и у обычных \textit{std::set, std::map}.\\
+\noindent \textbf{9.5) std::unordered\_map}
+\cs{9-15}
+Являются реализацией хеш-таблиц, поэтому операции поиска, вставки и удаления выполняются за константное время.\\
+\textit{KeyEqual} используется для проверки ключей на равенство.\\
+Аналогично существуют \textit{unordered\_set, unordered\_multimap, unordered\_multiset}.\\
+Так же есть методы позволяющие работать с бакетами и \textit{load\_factor}.\\
+\begin{center}
+	\begin{large}
+		\textbf{Итераторы}
+	\end{large}
+\end{center}
+\noindent \textbf{10.1) Общие  слова об итераторах}\\
+Главное предназначение итераторов заключается в предоставлении возможности пользователю обращаться к любому элементу контейнера при сокрытии внутренней структуры контейнера от пользователя. 
+\cs{17-18}
+Любой итератор можно инкрементировать и разыменовать.\\\
+\noindent \textbf{10.2) Виды итераторов}\\
+\textbf{InputIterator}.\\ Нельзя делать декремент, нельзя создавать копию такого итератора, чтобы несколько раз пробежаться по данным (неопределенное поведение). Можно инкрементировать, разыменовать (но нельзя менять объект, полученный при разыменовании) и сравнить на равенство (с помощью \textit{operator==, operator!=}).\\
+\textbf{ForwardIterator}(однонаправленный итератор, частный случай InputIterator).\\ Главным отличием от InputIterator является то, что можно несколько раз пробегаться по содержимому, например, создавая копию. Используется в \textit{forward\_list} и \textit{unordered\_map}.\\
+\textbf{BidirectionalIterator}(частный случай ForwardIterator).\\ Позволяет делать декремент. Используется в \textit{std::set}, \textit{std::map} и \textit{std::list}.\\
+\textbf{RandomAccessIterator}(частный случай BidirectionalIterator)\\ Можно сравнивать итераторы такого типа, прибавлять/вычитать число, вычитать итераторы друг из друга, использовать \textit{operator[]}. Используется в \textit{std::vector, std::deque}.\\
+\textbf{OutputIterator}\\ Позволяет изменять объект, полученный после разыменования итератора. Можно делать инкремент, но нельзя создавать копию для нескольких проходов. Операция чтения полученного значения после разыменования не всегда является допустимой. Тот факт, что итератор является OutputIterator'ом никак не зависит от предыдущей классификации.\\
+\noindent \textbf{10.3) \textit{const} и \textit{reverse} итераторы}
+\cs{20-21}
+Пример цикла по контейнеру. 
+\cs{22-22}
+Чтобы запретить менять элементы при проходе по ним, можно завести константные итераторы. 
+\cs{23-23}
+Можно обойти контейнер в обратном порядке (только для BidirectionalIterator).
+\cs{24-24}
+И их комбинация.
+\cs{64-78}
+Пример реализации обертки над обычными итераторами для реализации \textit{reverse} итераторов.\\
+\noindent \textbf{10.4) std::iterator\_traits}\\
+Помогает автоматически определить \textit{iterator\_tag} (классификация итераторов в начале параграфа).\\
+\noindent \textbf{10.5) std::distance, std::advance}\\
+Функция {std::distance(first, last)} возвращает количество инкрементов итератора \textit{first}, чтобы дойти до \textit{last}.\\
+Функция {std::advance(it, k)} \textit{k} инкрементирует итератор \textit{it}.\\
+В зависимости от того, какие итераторы были переданы, эти функции должны по-разному реализовываться.
+\cb{40-62}
+В данном случае для \textit{std::list} вызовется первая версия функции \textit{distance\_impl()}, а для \textit{std::vector} вторая. В функции \textit{dist()} мы вызываем конструктор от типа\\ \textit{std::iterator\_traits<Iterator>::iterator\_category}.
+\end{document}

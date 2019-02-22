@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.5)  15 FEB 2019 00:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.5)  22 FEB 2019 23:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**lecture14.tex
-(./lecture14.tex
+**lecture15.tex
+(./lecture15.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -743,8 +743,8 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(./lecture14.aux)
-\openout1 = `lecture14.aux'.
+(./lecture15.aux)
+\openout1 = `lecture15.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
@@ -876,12 +876,12 @@ e
 \Gin@req@width=\dimen137
 )
 \c@lstlisting=\count124
-LaTeX Font Info:    Try loading font information for U+msa on input line 41.
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 41.
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -894,122 +894,55 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) (./code14.cpp)
-Overfull \hbox (21.87305pt too wide) in paragraph at lines 44--47
-\T2A/cmr/m/it/10 Vector<bool> \T2A/cmr/m/n/10 эко-но-мит па-мять, но очень мед-
-лен-ный (име-ет смысл за-ме-нять его на \T2A/cmr/m/it/10 vector<char>\T2A/cmr/m
-/n/10 ). 
- []
-
-(./code14.cpp) (./code14.cpp) (./code14.cpp) (./code14.cpp) (./code14.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
+) (./code15.cpp)
+(./code15.cpp) (./code15.cpp)
+Underfull \hbox (badness 10000) in paragraph at lines 55--59
 
  []
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./code14.cpp)
-(./code14.cpp) (./code14.cpp) (./code14.cpp) (./code14.cpp) (./code14.cpp)
-(./code14.cpp) (./code14.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
-
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./code15.cpp)
+(./code15.cpp) (./code15.cpp) (./code15.cpp) (./code15.cpp)
+Overfull \hbox (17.51624pt too wide) in paragraph at lines 24--81
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-(./code14.cpp) [2] (./code14.cpp) (./code14.cpp) (./code14.cpp) (./code14.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 89--96
-
+(./code15.cpp [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 73.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
+)
+(./code15.cpp
+Overfull \hbox (39.27922pt too wide) in paragraph at lines 54--55
+[][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 89--96
-
- []
-
-(./code14.cpp) (./code14.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
-
- []
-
-(./code14.cpp [3])
-Underfull \hbox (badness 10000) in paragraph at lines 102--104
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--104
-
- []
-
-(./code14.cpp)
-Overfull \hbox (1.6449pt too wide) in paragraph at lines 105--106
-\T2A/cmr/m/n/10 Отсортированный ас-со-ци-а-тив-ный кон-тей-нер, ко-то-рый со-де
-р-жит па-ры ключ-значение с непо-
- []
-
-(./code14.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 107--111
-
- []
-
-(./code14.cpp) [4] (./lecture14.aux) ) 
+) [3] (./lecture15.aux) ) 
 Here is how much of TeX's memory you used:
- 8099 strings out of 493029
- 109734 string characters out of 6136235
- 233298 words of memory out of 5000000
- 11448 multiletter control sequences out of 15000+600000
- 11839 words of font info for 30 fonts, out of 8000000 for 9000
+ 8111 strings out of 493029
+ 110117 string characters out of 6136235
+ 234323 words of memory out of 5000000
+ 11484 multiletter control sequences out of 15000+600000
+ 14351 words of font info for 33 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,5n,100p,811b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-supe
-r/cm-super-t2a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/sha
-re/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
-m1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on lecture14.pdf (4 pages, 112115 bytes).
+ 51i,5n,100p,811b,1662s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2
+a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
+are/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type
+1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
+bx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/sha
+re/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1
+/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sft
+i1000.pfb>
+Output written on lecture15.pdf (3 pages, 148283 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 51 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
